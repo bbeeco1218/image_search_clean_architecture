@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search_clean_architecture/presentation/home/bloc/home_screen_bloc.dart';
-import 'package:image_search_clean_architecture/presentation/home/widget/photo_empty_view.dart';
 import 'package:image_search_clean_architecture/presentation/home/widget/photo_fail_view.dart';
 import 'package:image_search_clean_architecture/presentation/home/widget/photo_grid_view.dart';
 

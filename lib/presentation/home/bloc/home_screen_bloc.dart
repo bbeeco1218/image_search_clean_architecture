@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:image_search_clean_architecture/data/pixabay_api.dart';
+import 'package:image_search_clean_architecture/data/pixabay/pixabay_api.dart';
 import 'package:image_search_clean_architecture/model/pixabay_image.dart';
 
 part 'home_screen_event.dart';
