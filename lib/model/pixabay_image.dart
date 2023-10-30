@@ -6,15 +6,15 @@ part 'pixabay_image.g.dart';
 @JsonSerializable()
 class PixabayImage {
   @JsonKey(name: 'id')
-  int id;
+  final int id;
 
   @JsonKey(name: 'tags')
-  String tags;
+  final String tags;
 
   @JsonKey(name: 'previewURL')
-  String previewURL;
+  final String previewURL;
 
-  PixabayImage({
+  const PixabayImage({
     required this.id,
     required this.tags,
     required this.previewURL,
