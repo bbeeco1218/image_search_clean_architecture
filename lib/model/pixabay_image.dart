@@ -13,7 +13,7 @@ class PixabayImage {
     return PixabayImage(
       id: json['id'] ?? '',
       tags: json['tags'] ?? '',
-      previewUrl: json['previewUrl'] ?? '',
+      previewUrl: json['previewURL'] ?? 'https://cdn.pixabay.com/user/2019/09/18/07-14-26-24_250x250.jpg',
     );
   }
 

@@ -13,3 +13,10 @@ class HomeScreenSearchValueChanged extends HomeScreenEvent {
         searchValue,
       ];
 }
+
+class HomeScreenSearchButtonTapped extends HomeScreenEvent {
+  const HomeScreenSearchButtonTapped();
+
+  @override
+  List<Object?> get props => [];
+}

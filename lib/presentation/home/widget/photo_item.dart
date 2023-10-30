@@ -12,13 +12,13 @@ class PhotoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
           Radius.circular(16),
         ),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: NetworkImage('https://cdn.pixabay.com/user/2019/09/18/07-14-26-24_250x250.jpg'),
+          image: NetworkImage(image.previewUrl),
         ),
       ),
     );
