@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:image_search_clean_architecture/data/pixabay/data_source/pixabay_data_source.dart';
-import 'package:image_search_clean_architecture/model/pixabay_image.dart';
+import 'package:image_search_clean_architecture/data/pixabay/data_source/pixabay_api.dart';
+import 'package:image_search_clean_architecture/domain/model/pixabay_image.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
@@ -10,19 +10,18 @@ import 'pixabay_api_test.mocks.dart';
 @GenerateMocks([http.Client])
 void main() {
   test('api가 잘 동작 해야한다.', () async {
-    const PixabayDataSource pixabayAPI = PixabayDataSource();
-
     final client = MockClient();
+    PixabayApi pixabayAPI = PixabayApi(client);
 
     when(
-      client.get(Uri.parse('${PixabayDataSource.baseUrl}?key=${PixabayDataSource.key}&q=apple&image_type=photo')),
+      client.get(Uri.parse('${PixabayApi.baseUrl}?key=${PixabayApi.key}&q=apple&image_type=photo')),
     ).thenAnswer((_) async => http.Response(fakeJsonBody, 200));
 
-    final List<PixabayImage> images = await pixabayAPI.fetch('apple', client: client);
+    final List<PixabayImage> images = await pixabayAPI.fetch('apple');
 
     expect(images.first.id, 634572);
 
-    verify(client.get(Uri.parse('${PixabayDataSource.baseUrl}?key=${PixabayDataSource.key}&q=apple&image_type=photo')));
+    verify(client.get(Uri.parse('${PixabayApi.baseUrl}?key=${PixabayApi.key}&q=apple&image_type=photo')));
   });
 }
 

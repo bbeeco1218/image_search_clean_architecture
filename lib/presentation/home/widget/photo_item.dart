@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_search_clean_architecture/model/pixabay_image.dart';
+import 'package:image_search_clean_architecture/domain/model/pixabay_image.dart';
 
 class PhotoItem extends StatelessWidget {
   const PhotoItem({

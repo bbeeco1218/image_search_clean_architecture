@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_search_clean_architecture/model/pixabay_image.dart';
+import 'package:image_search_clean_architecture/domain/model/pixabay_image.dart';
 import 'package:image_search_clean_architecture/presentation/home/bloc/home_screen_bloc.dart';
 import 'package:image_search_clean_architecture/presentation/home/widget/photo_empty_view.dart';
 import 'package:image_search_clean_architecture/presentation/home/widget/photo_item.dart';
