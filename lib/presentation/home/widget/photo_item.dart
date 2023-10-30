@@ -18,7 +18,7 @@ class PhotoItem extends StatelessWidget {
         ),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: NetworkImage(image.previewUrl),
+          image: NetworkImage(image.previewURL),
         ),
       ),
     );

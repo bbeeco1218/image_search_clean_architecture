@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:image_search_clean_architecture/data/pixabay/pixabay_api.dart';
+import 'package:image_search_clean_architecture/data/pixabay/data_source/pixabay_data_source.dart';
 import 'package:image_search_clean_architecture/model/pixabay_image.dart';
 
 part 'home_screen_event.dart';
@@ -14,7 +14,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
     on<HomeScreenSearchButtonTapped>(_onSearchButtonTapped);
   }
 
-  final PixabayAPI pixabayAPI = PixabayAPI();
+  final PixabayDataSource pixabayAPI = PixabayDataSource();
 
   void _onSearchValueChanged(HomeScreenSearchValueChanged event, HomeScreenEmitter emit) {
     emit(state.copyWith(searchValue: event.searchValue));
