@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:image_search_clean_architecture/ui/home_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_search_clean_architecture/presentation/home/bloc/home_screen_bloc.dart';
+import 'package:image_search_clean_architecture/presentation/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Image Search',
-      home: HomeScreen(),
+      home: BlocProvider(
+        create: (context) => HomeScreenBloc(),
+        child: const HomeScreen(),
+      ),
     );
   }
 }
