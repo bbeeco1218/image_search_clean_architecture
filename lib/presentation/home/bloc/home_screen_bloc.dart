@@ -7,6 +7,7 @@ import 'package:image_search_clean_architecture/data/pixabay/data_source/result.
 import 'package:image_search_clean_architecture/data/pixabay/repository/pixabay_repository_impl.dart';
 import 'package:image_search_clean_architecture/domain/model/pixabay_image.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_search_clean_architecture/domain/use_case/get_pixabay_image_use_case.dart';
 
 part 'home_screen_event.dart';
 part 'home_screen_state.dart';
@@ -19,7 +20,13 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
     on<HomeScreenSearchButtonTapped>(_onSearchButtonTapped);
   }
 
-  final PixabayRepositoryImpl pixabayAPI = PixabayRepositoryImpl(api: PixabayApi(http.Client()));
+  final GetPixabayImageUseCase pixabayAPI = GetPixabayImageUseCase(
+    pixabayRepository: PixabayRepositoryImpl(
+      api: PixabayApi(
+        http.Client(),
+      ),
+    ),
+  );
 
   void _onSearchValueChanged(HomeScreenSearchValueChanged event, HomeScreenEmitter emit) {
     emit(state.copyWith(searchValue: event.searchValue));
@@ -27,7 +34,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
 
   Future<void> _onSearchButtonTapped(_, HomeScreenEmitter emit) async {
     emit(state.copyWith(imageGridStatus: ImageGridStatus.loading));
-    final Result<List<PixabayImage>> newImages = await pixabayAPI.fetch(state.searchValue);
+    final Result<List<PixabayImage>> newImages = await pixabayAPI.execute(state.searchValue);
 
     switch (newImages) {
       case Success<List<PixabayImage>>():

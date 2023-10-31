@@ -37,6 +37,8 @@ dependencies:
   equatable: ^2.0.5
   http: ^0.13.5
   json_annotation: ^4.7.0
+  injectable: ^2.3.2
+  get_it: ^7.6.4
 
 dev_dependencies:
   flutter_test:

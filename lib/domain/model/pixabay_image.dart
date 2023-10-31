@@ -14,10 +14,14 @@ class PixabayImage {
   @JsonKey(name: 'previewURL')
   final String previewURL;
 
+  @JsonKey(name: 'largeImageURL')
+  final String largeImageURL;
+
   const PixabayImage({
     required this.id,
     required this.tags,
     required this.previewURL,
+    required this.largeImageURL,
   });
 
   factory PixabayImage.fromJson(Map<String, dynamic> json) => _$PixabayImageFromJson(json);
