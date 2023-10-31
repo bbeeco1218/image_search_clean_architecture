@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_search_clean_architecture/data/pixabay/data_source/pixabay_api.dart';
+import 'package:image_search_clean_architecture/data/pixabay/data_source/result.dart';
 import 'package:image_search_clean_architecture/data/pixabay/repository/pixabay_repository_impl.dart';
 import 'package:image_search_clean_architecture/domain/model/pixabay_image.dart';
 import 'package:http/http.dart' as http;
@@ -24,11 +27,20 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
 
   Future<void> _onSearchButtonTapped(_, HomeScreenEmitter emit) async {
     emit(state.copyWith(imageGridStatus: ImageGridStatus.loading));
-    final List<PixabayImage> newImages = await pixabayAPI.fetch(state.searchValue);
+    final Result<List<PixabayImage>> newImages = await pixabayAPI.fetch(state.searchValue);
 
-    emit(state.copyWith(
-      images: newImages,
-      imageGridStatus: ImageGridStatus.success,
-    ));
+    switch (newImages) {
+      case Success<List<PixabayImage>>():
+        emit(state.copyWith(
+          images: newImages.data,
+          imageGridStatus: ImageGridStatus.success,
+        ));
+
+      case Error<List<PixabayImage>>():
+        emit(state.copyWith(
+          images: [],
+          imageGridStatus: ImageGridStatus.fail,
+        ));
+    }
   }
 }
