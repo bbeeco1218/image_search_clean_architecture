@@ -1,6 +1,7 @@
 # image_search_clean_architecture
 
-A new Flutter project.
+간단한 비동기 api를 사용해서 이미지를 찾아주는 앱
+- 클린 아키텍쳐 적용
 
 ## Getting Started
 
